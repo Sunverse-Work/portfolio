@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World | Experiência Moderna</title>
+    <meta name="description" content="Um Hello World moderno, interativo e com design premium.">
+    
+    <!-- Fonte Premium do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Variáveis de Design - Cores e Efeitos */
+        :root {
+            --bg-color: #050508;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            
+            /* Paleta de Gradientes (Tema Principal: Aurora Violeta) */
+            --glow-1: #6366f1;
+            --glow-2: #d946ef;
+            --gradient-text: linear-gradient(135deg, #a5b4fc 0%, #6366f1 50%, #d946ef 100%);
+            
+            --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Temas Alternativos (Dinâmicos via JS) */
+        [data-theme="emerald"] {
+            --glow-1: #10b981;
+            --glow-2: #06b6d4;
+            --gradient-text: linear-gradient(135deg, #a7f3d0 0%, #10b981 50%, #06b6d4 100%);
+        }
+
+        [data-theme="amber"] {
+            --glow-1: #f59e0b;
+            --glow-2: #ef4444;
+            --gradient-text: linear-gradient(135deg, #fde68a 0%, #f59e0b 50%, #ef4444 100%);
+        }
+
+        /* Estilos Globais */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        /* Esferas de Brilho de Fundo (Glow Effect) */
+        .ambient-glows {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .glow-sphere {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.45;
+            mix-blend-mode: screen;
+            transition: var(--transition-smooth);
+            animation: pulse-ambient 12s infinite alternate ease-in-out;
+        }
+
+        .glow-sphere-1 {
+            width: 45vw;
+            height: 45vw;
+            background: radial-gradient(circle, var(--glow-1) 0%, rgba(0,0,0,0) 70%);
+            top: -10%;
+            left: -10%;
+        }
+
+        .glow-sphere-2 {
+            width: 40vw;
+            height: 40vw;
+            background: radial-gradient(circle, var(--glow-2) 0%, rgba(0,0,0,0) 70%);
+            bottom: -5%;
+            right: -5%;
+            animation-delay: -4s;
+        }
+
+        @keyframes pulse-ambient {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            50% {
+                transform: translate(5%, 3%) scale(1.1);
+            }
+            100% {
+                transform: translate(-3%, -5%) scale(0.95);
+            }
+        }
+
+        /* Container Principal */
+        main {
+            position: relative;
+            z-index: 2;
+            width: 90%;
+            max-width: 580px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        /* Card Glassmorphic */
+        .glass-card {
+            width: 100%;
+            background: var(--card-bg);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border: 1px solid var(--card-border);
+            border-radius: 28px;
+            padding: 3.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5),
+                        0 0 40px rgba(99, 102, 241, 0.05);
+            transform-style: preserve-3d;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+            position: relative;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 28px;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.01) 50%, rgba(255,255,255,0.05) 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.6),
+                        0 0 50px rgba(99, 102, 241, 0.1);
+        }
+
+        /* Subtítulo Moderno */
+        .tagline {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            position: relative;
+            background: linear-gradient(90deg, var(--glow-1), var(--glow-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: text-shine 6s infinite linear;
+        }
+
+        @keyframes text-shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        /* O Título "Hello World" com Efeito de Gradiente Líquido */
+        .title {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: gradient-flow 5s ease infinite alternate;
+            margin-bottom: 1.5rem;
+            transform: translateZ(50px); /* Efeito 3D */
+        }
+
+        @keyframes gradient-flow {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* Mensagem de Descrição */
+        .description {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            max-width: 400px;
+            margin: 0 auto;
+            line-height: 1.6;
+            transform: translateZ(30px);
+        }
+
+        /* Botões de Ação Interativa */
+        .actions-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+            transform: translateZ(40px);
+        }
+
+        .btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 14px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: inherit;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* Mini Assinatura / Rodapé */
+        .footer-tag {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.05em;
+            transition: var(--transition-smooth);
+            cursor: default;
+        }
+
+        .footer-tag:hover {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsividade Extrema */
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2.8rem;
+            }
+            .glass-card {
+                padding: 2.5rem 1.5rem;
+            }
+            .description {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Brilhos Ambientais do Background -->
+    <div class="ambient-glows">
+        <div class="glow-sphere glow-sphere-1" id="glow1"></div>
+        <div class="glow-sphere glow-sphere-2" id="glow2"></div>
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <main>
+        
+        <!-- Cartão Principal Glassmorphic -->
+        <div class="glass-card" id="card">
+            <span class="tagline">Iniciação Cósmica</span>
+            
+            <h1 class="title" id="main-title">Hello World</h1>
+            
+            <p class="description">
+                Uma clássica porta de entrada para a programação, redesenhada com estética futurista, fluidez e interatividade de alto nível.
+            </p>
+
+            <div class="actions-group">
+                <!-- Botão para Mudar de Cor Dinamicamente -->
+                <button class="btn" id="theme-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+                    Alterar Cosmos
+                </button>
+            </div>
+        </div>
+
+        <!-- Rodapé Minimalista -->
+        <div class="footer-tag">
+            Desenhado com precisão &bull; 2026
+        </div>
+
+    </main>
+
+    <!-- Script de Efeitos Interativos -->
+    <script>
+        const card = document.getElementById('card');
+        const themeBtn = document.getElementById('theme-btn');
+        const htmlNode = document.documentElement;
+
+        // --- Efeito Parallax 3D Suave no Mouse ---
+        const handleMouseMove = (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left - (rect.width / 2);
+            const y = e.clientY - rect.top - (rect.height / 2);
+
+            // Ajusta o multiplicador para controlar a sensibilidade da rotação
+            const rotateX = -(y / rect.height) * 20; 
+            const rotateY = (x / rect.width) * 20;
+
+            card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        };
+
+        const resetCard = () => {
+            card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+        };
+
+        // Escuta os eventos para dispositivos que usam mouse
+        card.addEventListener('mousemove', handleMouseMove);
+        card.addEventListener('mouseleave', resetCard);
+
+
+        // --- Troca Dinâmica de Temas (Cores Ambientais) ---
+        const themes = ['default', 'emerald', 'amber'];
+        let currentThemeIndex = 0;
+
+        themeBtn.addEventListener('click', () => {
+            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+            const newTheme = themes[currentThemeIndex];
+            
+            // Define o atributo customizado de dados no elemento <html> para alterar as cores do CSS
+            if (newTheme === 'default') {
+                htmlNode.removeAttribute('data-theme');
+            } else {
+                htmlNode.setAttribute('data-theme', newTheme);
+            }
+
+            // Animação de clique sutil no botão
+            themeBtn.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                themeBtn.style.transform = 'translateY(-2px)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
