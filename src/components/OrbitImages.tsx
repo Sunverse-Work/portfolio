@@ -209,6 +209,7 @@ export default function OrbitImages({
   const progress = useMotionValue(0);
 
   useEffect(() => {
+    // @ts-ignore: framer-motion typing mismatch for MotionValue overload
     controlsRef.current = animate(progress, direction === 'reverse' ? -100 : 100, {
       duration,
       ease: easing,
