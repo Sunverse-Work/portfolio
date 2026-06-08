@@ -7,7 +7,7 @@ import { useI18n } from "@/i18n/I18nContext";
 
 export default function FAQ() {
     const { t } = useI18n();
-    const [openIndex, setOpenIndex] = useState<number | null>(0);
+    const [openIndex, setOpenIndex] = useState<number | null>(null);
 
     return (
         <section className="px-4 py-24 md:py-32 max-w-3xl mx-auto w-full" id="faq">

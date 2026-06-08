@@ -1,38 +1,85 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useMotionTemplate, useMotionValue, useSpring } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { MouseEvent } from "react";
 import dynamic from "next/dynamic";
 import { useI18n } from "@/i18n/I18nContext";
+import { CtaButton } from "@/components/CtaButton";
 
 const Beams = dynamic(() => import("@/components/Beams"), { ssr: false });
 
 export default function Hero() {
     const { t } = useI18n();
 
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
+
+    const springX = useSpring(mouseX, { stiffness: 300, damping: 30 });
+    const springY = useSpring(mouseY, { stiffness: 300, damping: 30 });
+
+    function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent<HTMLElement>) {
+        const { left, top } = currentTarget.getBoundingClientRect();
+        mouseX.set(clientX - left);
+        mouseY.set(clientY - top);
+    }
+
+    // Instead of a colored overlay, we use a mask on the background itself!
+    // black = fully visible (under mouse)
+    // rgba(0,0,0,0.1) = globally visible (away from mouse, dark again)
+    const spotlightMask = useMotionTemplate`radial-gradient(1400px circle at ${springX}px ${springY}px, black 0%, rgba(0,0,0,0.08) 60%)`;
+
+    const renderTitle = (text: string) => {
+        const parts = text.split('*');
+        return parts.map((part, i) => {
+            if (i % 2 === 1) {
+                return (
+                    <span 
+                        key={i} 
+                        className="italic font-medium text-transparent bg-clip-text bg-gradient-to-r from-purple-900 via-purple-600 to-purple-200 drop-shadow-[0_0_30px_rgba(168,85,247,0.5)]"
+                        style={{ fontFamily: "'Playfair Display', 'Times New Roman', Georgia, serif" }}
+                    >
+                        {part}
+                    </span>
+                );
+            }
+            return part;
+        });
+    };
+
     return (
-        <section className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-20 overflow-hidden" id="home">
-            <div className="absolute inset-0 z-0">
+        <section 
+            className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-20 overflow-hidden" 
+            id="home"
+            onMouseMove={handleMouseMove}
+        >
+            <motion.div 
+                className="absolute inset-0 z-0"
+                style={{ 
+                    WebkitMaskImage: spotlightMask,
+                    maskImage: spotlightMask
+                }}
+            >
                 <Beams
                     beamWidth={2.5}
                     beamHeight={23}
                     beamNumber={16}
-                    lightColor="#7e22ce"
+                    lightColor="#b026ff" // Highly saturated neon purple
                     speed={4}
                     noiseIntensity={0.75}
                     scale={0.15}
                     rotation={145}
                 />
-            </div>
+            </motion.div>
 
             <div className="relative z-10 text-center max-w-4xl mx-auto flex flex-col items-center justify-center">
                 <motion.h1
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, ease: [0.25, 1, 0.5, 1] }}
-                    className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 leading-[1.1]"
+                    className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mb-8 leading-[1.05]"
                 >
-                    {t.hero.title}
+                    {renderTitle(t.hero.title)}
                 </motion.h1>
 
                 <motion.p
@@ -44,20 +91,13 @@ export default function Hero() {
                     {t.hero.subtitle}
                 </motion.p>
 
-                <motion.button
+                <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
                     transition={{ duration: 0.5, delay: 1, ease: [0.25, 1, 0.5, 1] }}
-                    className="group relative inline-flex items-center gap-2 px-8 py-4 bg-[#0a0014] border border-purple-800/50 hover:border-orange-500/60 text-white rounded-full font-medium overflow-hidden isolated transition-all duration-300"
                 >
-                    <span className="relative z-10">{t.hero.cta}</span>
-                    <ArrowRight className="w-4 h-4 relative z-10 transition-transform group-hover:translate-x-1" />
-                    <motion.div
-                        className="absolute inset-0 bg-[#2a005c] opacity-0 group-hover:opacity-100 transition-all duration-300 z-0"
-                    />
-                </motion.button>
+                    <CtaButton label={t.hero.cta} />
+                </motion.div>
             </div>
 
             <motion.div

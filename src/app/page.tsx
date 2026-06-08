@@ -1,20 +1,26 @@
 import Hero from "@/components/Hero";
-import ServicesBento from "@/components/ServicesBento";
+import Marquee from "@/components/Marquee";
+import ServicesSlider from "@/components/ServicesSlider";
+import HowWeWork from "@/components/HowWeWork";
 import Portfolio from "@/components/Portfolio";
-import SkillsGrid from "@/components/SkillsGrid";
+import Reviews from "@/components/Reviews";
+import Team from "@/components/Team";
 import FAQ from "@/components/FAQ";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="relative flex min-h-screen flex-col items-center justify-center overflow-x-hidden">
+    <main className="relative flex min-h-screen flex-col items-center justify-center overflow-x-clip">
       <Navbar />
       <div className="w-full">
         <Hero />
-        <ServicesBento />
+        <Marquee />
+        <ServicesSlider />
+        <HowWeWork />
         <Portfolio />
-        <SkillsGrid />
+        <Reviews />
+        <Team />
         <FAQ />
       </div>
       <Footer />

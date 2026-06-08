@@ -53,7 +53,7 @@ export default function CustomCursor() {
 
     return (
         <motion.div
-            className="pointer-events-none fixed top-0 left-0 z-50 rounded-full border flex items-center justify-center transition-colors duration-300"
+            className="pointer-events-none fixed top-0 left-0 z-[99999] rounded-full border flex items-center justify-center transition-colors duration-300"
             style={{
                 x: cursorX,
                 y: cursorY,
@@ -70,7 +70,7 @@ export default function CustomCursor() {
         >
             {/* Tiny center dot for precise pointing, disappears on hover */}
             <motion.div 
-                className="w-1 h-1 rounded-full bg-orange-500"
+                className="w-1 h-1 rounded-full bg-purple-400"
                 animate={{ scale: isHovering ? 0 : 1, opacity: isHovering ? 0 : 1 }}
                 transition={{ duration: 0.2 }}
             />

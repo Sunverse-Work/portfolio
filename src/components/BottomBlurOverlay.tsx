@@ -1,6 +1,34 @@
 "use client";
 
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+
 export default function BottomBlurOverlay() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const services = document.getElementById("services");
+      const footer = document.querySelector("footer");
+      
+      if (!services || !footer) return;
+
+      const servicesRect = services.getBoundingClientRect();
+      const footerRect = footer.getBoundingClientRect();
+
+      // Show if we are below services (services has scrolled out of view) 
+      // AND we are not at the footer yet (footer is not in view)
+      const pastServices = servicesRect.bottom <= window.innerHeight;
+      const beforeFooter = footerRect.top > window.innerHeight;
+
+      setIsVisible(pastServices && beforeFooter);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const layers = [
     { blur: 0.25, mask: "0% 12.5% 25% 37.5%" },
     { blur: 0.5,  mask: "12.5% 25% 37.5% 50%" },
@@ -13,8 +41,11 @@ export default function BottomBlurOverlay() {
   ];
 
   return (
-    <div
+    <motion.div
       aria-hidden="true"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: isVisible ? 1 : 0 }}
+      transition={{ duration: 0.5 }}
       style={{
         position: "fixed",
         bottom: 0,
@@ -44,6 +75,6 @@ export default function BottomBlurOverlay() {
           />
         );
       })}
-    </div>
+    </motion.div>
   );
 }
