@@ -340,7 +340,7 @@ export default function OrbitImages({
                 <img
                   src={selectedImage}
                   alt="Enlarged view"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover object-top"
                 />
                 <button
                   className="absolute top-4 right-4 sm:top-6 sm:right-6 w-12 h-12 rounded-full bg-black/50 hover:bg-purple-500/50 border border-white/10 hover:border-purple-400 text-white flex items-center justify-center transition-all duration-300 backdrop-blur-md group"

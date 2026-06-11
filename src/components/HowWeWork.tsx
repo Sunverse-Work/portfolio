@@ -11,7 +11,7 @@ export default function HowWeWork() {
     const steps = t.howWeWork?.steps || [];
 
     return (
-        <section className="relative w-full py-24 md:py-32 flex flex-col items-center justify-center overflow-hidden bg-[#050505]" id="process">
+        <section className="relative w-full py-24 md:py-32 flex flex-col items-center justify-center overflow-hidden bg-black" id="process">
             <div className="max-w-[1200px] w-full px-4 md:px-12 z-10 flex flex-col items-center">
                 {/* Headers */}
                 <motion.div 

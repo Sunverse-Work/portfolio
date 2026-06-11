@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { PenTool, Code2 } from "lucide-react";
 import { useI18n } from "@/i18n/I18nContext";
 import textureBg from "@/assets/texture.svg";
+import williamsImg from "@/assets/team/Williams.jpg";
+import douglasImg from "@/assets/team/Douglas.jpg";
 
 export default function Team() {
     const { t } = useI18n();
@@ -48,10 +50,10 @@ export default function Team() {
             <div className="relative w-full flex flex-col gap-24 md:gap-40 z-10 pt-10 md:pt-16 max-w-6xl mx-auto">
                 {members.map((member: any, i: number) => {
                     const isEven = i % 2 === 0;
-                    // Generic high-quality Unsplash portraits 
+                    // Team members portraits
                     const imageUrl = isEven 
-                        ? "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600&auto=format&fit=crop" 
-                        : "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop";
+                        ? williamsImg.src 
+                        : douglasImg.src;
 
                     return (
                         <motion.div 
