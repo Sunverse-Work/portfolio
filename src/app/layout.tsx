@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt" className={`dark ${manrope.variable}`}>
+    <html lang="pt" className={`dark ${manrope.variable} scroll-smooth`}>
       <head>
       </head>
       <body className="antialiased min-h-screen bg-black text-white selection:bg-purple-700 selection:text-white">
