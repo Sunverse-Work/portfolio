@@ -3,6 +3,10 @@
 import React from "react";
 import buttonBg from "@/assets/button-gradient.jpg";
 
+const WHATSAPP_NUMBER = "5571982905172";
+const WHATSAPP_MESSAGE = encodeURIComponent("Olá! Vim pelo site da Sunverse e gostaria de saber mais sobre os serviços de vocês. Podemos conversar?");
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
+
 interface CtaButtonProps {
   label?: string;
   onClick?: () => void;
@@ -15,9 +19,11 @@ export function CtaButton({
   disabled = false,
 }: CtaButtonProps) {
   return (
-    <button
+    <a
+      href={WHATSAPP_URL}
+      target="_blank"
+      rel="noopener noreferrer"
       onClick={onClick}
-      disabled={disabled}
       style={{
         position: "relative",
         display: "inline-flex",
@@ -43,24 +49,25 @@ export function CtaButton({
         overflow: "hidden",
         userSelect: "none",
         zIndex: 10,
+        textDecoration: "none",
       }}
       onMouseEnter={(e) => {
         if (!disabled) {
-          (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
-          (e.currentTarget as HTMLButtonElement).style.boxShadow =
+          (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)";
+          (e.currentTarget as HTMLAnchorElement).style.boxShadow =
             "inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -30px 40px -10px rgba(160, 80, 255, 0.8)";
         }
       }}
       onMouseLeave={(e) => {
-        (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
-        (e.currentTarget as HTMLButtonElement).style.boxShadow =
+        (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
+        (e.currentTarget as HTMLAnchorElement).style.boxShadow =
           "inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -10px 20px -10px rgba(160, 80, 255, 0.3)";
       }}
       onMouseDown={(e) => {
-        (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0px) scale(0.99)";
+        (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0px) scale(0.99)";
       }}
       onMouseUp={(e) => {
-        (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px) scale(1)";
+        (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px) scale(1)";
       }}
     >
       {/* Shimmer overlay */}
@@ -76,6 +83,7 @@ export function CtaButton({
       />
       {/* Texto */}
       <span style={{ position: "relative", zIndex: 1 }}>{label}</span>
-    </button>
+    </a>
   );
 }
+

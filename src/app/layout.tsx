@@ -8,8 +8,8 @@ import { Manrope } from "next/font/google";
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope" });
 
 export const metadata: Metadata = {
-  title: "Dark Industry Portfolio",
-  description: "Designer Sênior de Web, Gráfico e Motion",
+  title: "Sunverse - Agência",
+  description: "Aumente a percepção de valor da sua marca com experiências web de alto padrão. Especialistas em criação de Landing Pages, Sites Institucionais e plataformas web focadas em conversão.",
 };
 
 export default function RootLayout({

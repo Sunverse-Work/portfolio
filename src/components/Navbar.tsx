@@ -15,27 +15,34 @@ const LOCALES: { code: Locale; label: string; flag: string }[] = [
   { code: "es", label: "ES", flag: "🇪🇸" },
 ];
 
+const WHATSAPP_NUMBER = "5571982905172";
+const WHATSAPP_MSG = encodeURIComponent("Olá! Vim pelo site da Sunverse e gostaria de saber mais sobre os serviços de vocês. Podemos conversar?");
+const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MSG}`;
+
 function HeaderContactButton({ text }: { text: string }) {
   const words = text.split(" ");
   return (
-    <button
-      className="group relative inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full text-white text-sm font-medium overflow-hidden transition-all duration-300 whitespace-nowrap"
+    <a
+      href={WHATSAPP_LINK}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group relative inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full text-white text-sm font-medium overflow-hidden transition-all duration-300 whitespace-nowrap no-underline"
       style={{
         background: "radial-gradient(120% 120% at 20% 100%, rgba(140,50,255,0.3) 0%, #0a0014 80%)",
         border: "1px solid rgba(160, 80, 255, 0.3)",
         boxShadow: "inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -10px 20px -10px rgba(160, 80, 255, 0.3)",
       }}
       onMouseEnter={(e) => {
-        (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
-        (e.currentTarget as HTMLButtonElement).style.boxShadow =
+        (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)";
+        (e.currentTarget as HTMLAnchorElement).style.boxShadow =
           "inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -30px 40px -10px rgba(160, 80, 255, 0.8)";
-        (e.currentTarget as HTMLButtonElement).style.background = "radial-gradient(120% 120% at 20% 100%, rgba(160,80,255,0.5) 0%, #0a0014 80%)";
+        (e.currentTarget as HTMLAnchorElement).style.background = "radial-gradient(120% 120% at 20% 100%, rgba(160,80,255,0.5) 0%, #0a0014 80%)";
       }}
       onMouseLeave={(e) => {
-        (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
-        (e.currentTarget as HTMLButtonElement).style.boxShadow =
+        (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
+        (e.currentTarget as HTMLAnchorElement).style.boxShadow =
           "inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -10px 20px -10px rgba(160, 80, 255, 0.3)";
-        (e.currentTarget as HTMLButtonElement).style.background = "radial-gradient(120% 120% at 20% 100%, rgba(140,50,255,0.3) 0%, #0a0014 80%)";
+        (e.currentTarget as HTMLAnchorElement).style.background = "radial-gradient(120% 120% at 20% 100%, rgba(140,50,255,0.3) 0%, #0a0014 80%)";
       }}
     >
       <div className="relative overflow-hidden flex items-center h-[1.2em] w-full">
@@ -68,7 +75,7 @@ function HeaderContactButton({ text }: { text: string }) {
           </svg>
         </div>
       </div>
-    </button>
+    </a>
   );
 }
 

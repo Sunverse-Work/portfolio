@@ -115,6 +115,36 @@ export const translations = {
           text: "Uma parceria de muito sucesso! Nosso e-commerce ficou muito mais rápido, as métricas de retenção melhoraram e o feedback dos clientes tem sido ótimo.",
           name: "Juliana Carvalho",
           role: "Head de E-commerce"
+        },
+        {
+          text: "Nosso escritório de advocacia precisava de uma presença digital à altura da nossa reputação. O resultado foi um site sofisticado que transmite credibilidade desde o primeiro segundo.",
+          name: "Rafael Mendes",
+          role: "Sócio Fundador"
+        },
+        {
+          text: "Triplicamos o número de leads qualificados depois que o novo site foi ao ar. A estrutura estratégica da landing page faz toda a diferença na conversão.",
+          name: "Camila Rocha",
+          role: "Head de Marketing"
+        },
+        {
+          text: "O design ficou tão premium que nossos concorrentes perguntaram quem fez. A experiência do usuário é extremamente fluida e moderna.",
+          name: "André Bastos",
+          role: "Diretor Comercial"
+        },
+        {
+          text: "Contratamos para uma landing page e acabamos fazendo três projetos juntos. A qualidade do trabalho fala por si só. Parceria contínua garantida.",
+          name: "Patrícia Almeida",
+          role: "Empreendedora"
+        },
+        {
+          text: "Nosso app web foi entregue antes do prazo e com uma qualidade absurda. A performance em mobile é perfeita e os clientes elogiam todos os dias.",
+          name: "Lucas Ferreira",
+          role: "CTO"
+        },
+        {
+          text: "O investimento se pagou no primeiro mês. A página de vendas converteu muito acima da média do mercado. Profissionais excepcionais com uma visão estratégica incrível.",
+          name: "Bianca Torres",
+          role: "Diretora de Operações"
         }
       ]
     },
@@ -300,6 +330,36 @@ export const translations = {
           text: "A very successful partnership! Our e-commerce is much faster, retention metrics improved, and customer feedback has been great.",
           name: "Juliana Carvalho",
           role: "Head of E-commerce"
+        },
+        {
+          text: "Our law firm needed a digital presence that matched our reputation. The result was a sophisticated site that conveys credibility from the very first second.",
+          name: "Rafael Mendes",
+          role: "Founding Partner"
+        },
+        {
+          text: "We tripled our qualified leads after the new site went live. The strategic structure of the landing page makes all the difference in conversion.",
+          name: "Camila Rocha",
+          role: "Head of Marketing"
+        },
+        {
+          text: "The design turned out so premium that our competitors asked who built it. The user experience is extremely smooth and modern.",
+          name: "André Bastos",
+          role: "Commercial Director"
+        },
+        {
+          text: "We hired them for one landing page and ended up doing three projects together. The quality of their work speaks for itself. Ongoing partnership guaranteed.",
+          name: "Patrícia Almeida",
+          role: "Entrepreneur"
+        },
+        {
+          text: "Our web app was delivered ahead of schedule with outstanding quality. Mobile performance is perfect, and clients praise it every day.",
+          name: "Lucas Ferreira",
+          role: "CTO"
+        },
+        {
+          text: "The investment paid for itself in the first month. The sales page converted well above market average. Exceptional professionals with incredible strategic vision.",
+          name: "Bianca Torres",
+          role: "Operations Director"
         }
       ]
     },
@@ -485,6 +545,36 @@ export const translations = {
           text: "¡Una asociación muy exitosa! Nuestro e-commerce es mucho más rápido, las métricas de retención mejoraron y los comentarios de los clientes han sido geniales.",
           name: "Juliana Carvalho",
           role: "Head of E-commerce"
+        },
+        {
+          text: "Nuestro bufete de abogados necesitaba una presencia digital a la altura de nuestra reputación. El resultado fue un sitio sofisticado que transmite credibilidad desde el primer segundo.",
+          name: "Rafael Mendes",
+          role: "Socio Fundador"
+        },
+        {
+          text: "Triplicamos el número de leads calificados después de que el nuevo sitio entró en funcionamiento. La estructura estratégica de la landing page marca toda la diferencia en la conversión.",
+          name: "Camila Rocha",
+          role: "Head de Marketing"
+        },
+        {
+          text: "El diseño quedó tan premium que nuestros competidores preguntaron quién lo hizo. La experiencia de usuario es extremadamente fluida y moderna.",
+          name: "André Bastos",
+          role: "Director Comercial"
+        },
+        {
+          text: "Los contratamos para una landing page y terminamos haciendo tres proyectos juntos. La calidad del trabajo habla por sí sola. Asociación continua garantizada.",
+          name: "Patrícia Almeida",
+          role: "Emprendedora"
+        },
+        {
+          text: "Nuestra web app fue entregada antes del plazo y con una calidad impresionante. El rendimiento en móvil es perfecto y los clientes lo elogian todos los días.",
+          name: "Lucas Ferreira",
+          role: "CTO"
+        },
+        {
+          text: "La inversión se recuperó en el primer mes. La página de ventas convirtió muy por encima del promedio del mercado. Profesionales excepcionales con una visión estratégica increíble.",
+          name: "Bianca Torres",
+          role: "Directora de Operaciones"
         }
       ]
     },
